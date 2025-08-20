@@ -1,0 +1,22 @@
+<!--
+Template (MVT - Template) del formulario de registro de vuelos.
+La validación y normalización de datos se realiza en `FlightForm` (no en la vista),
+respetando SRP y manteniendo la vista delgada.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Registrar Vuelo</title>
+</head>
+<body>
+	<h1>Registrar Vuelo</h1>
+	<p><a href="{% url 'home' %}">Volver al inicio</a></p>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Guardar</button>
+	</form>
+</body>
+</html> 

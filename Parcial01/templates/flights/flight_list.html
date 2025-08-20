@@ -1,0 +1,51 @@
+<!--
+Template (MVT - Template) del listado de vuelos.
+Muestra: id, nombre, tipo y precio. El queryset ya viene ordenado por precio (menor primero) desde la capa de servicios.
+RECORDAR: EN EL ENUNCIADO DICE:
+
+- Si el tipo es "Nacional": el precio se muestra en azul.
+- Si el tipo es "Internacional": el nombre se muestra en negrilla.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Listar Vuelos</title>
+	<style>
+		.price-nacional { color: blue; }
+	</style>
+</head>
+<body>
+	<h1>Lista de Vuelos</h1>
+	<p><a href="{% url 'home' %}">Volver al inicio</a></p>
+	<table border="1" cellpadding="5" cellspacing="0">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Tipo</th>
+				<th>Precio</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for flight in flights %}
+			<tr>
+				<td>{{ flight.id }}</td>
+				<td>
+					{% if flight.type == 'Internacional' %}
+						<strong>{{ flight.name }}</strong>
+					{% else %}
+						{{ flight.name }}
+					{% endif %}
+				</td>
+				<td>{{ flight.type }}</td>
+				<td class="{% if flight.type == 'Nacional' %}price-nacional{% endif %}">{{ flight.price }}</td>
+			</tr>
+			{% empty %}
+			<tr><td colspan="4">No hay vuelos registrados.</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html> 

@@ -1,0 +1,22 @@
+<!--
+Template (MVT - Template) de estadísticas.
+Los datos `count_national`, `count_international` y `average_national_price` son
+calculados en la capa de servicios (`calculate_flight_statistics`) y la vista solo los presenta.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Estadísticas de Vuelos</title>
+</head>
+<body>
+	<h1>Estadísticas de Vuelos</h1>
+	<p><a href="{% url 'home' %}">Volver al inicio</a></p>
+	<ul>
+		<li>Vuelos Nacionales: {{ count_national }}</li>
+		<li>Vuelos Internacionales: {{ count_international }}</li>
+		<li>Precio promedio de vuelos Nacionales: {% if average_national_price %}${{ average_national_price }}{% else %}N/A{% endif %}</li>
+	</ul>
+</body>
+</html> 

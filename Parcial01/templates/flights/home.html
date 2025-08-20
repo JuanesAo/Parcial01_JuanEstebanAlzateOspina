@@ -1,0 +1,21 @@
+<!--
+Template (MVT - Template) de la página de inicio.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Inicio - Vuelos Rionegro</title>
+</head>
+<body>
+	<h1>Vuelos Rionegro</h1>
+	<nav>
+		<ul>
+			<li><a href="{% url 'flight_create' %}">Registrar vuelos</a></li>
+			<li><a href="{% url 'flight_list' %}">Listar vuelos</a></li>
+			<li><a href="{% url 'flight_stats' %}">Estadísticas de vuelos</a></li>
+		</ul>
+	</nav>
+</body>
+</html> 
